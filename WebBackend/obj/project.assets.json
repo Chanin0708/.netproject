@@ -1731,11 +1731,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\portal\\Backend\\WebBackend\\WebBackend.csproj",
+      "projectUniqueName": "C:\\Users\\Aorus\\ditnetproject\\WebBackend\\WebBackend.csproj",
       "projectName": "WebBackend",
-      "projectPath": "F:\\portal\\Backend\\WebBackend\\WebBackend.csproj",
+      "projectPath": "C:\\Users\\Aorus\\ditnetproject\\WebBackend\\WebBackend.csproj",
       "packagesPath": "C:\\Users\\Aorus\\.nuget\\packages\\",
-      "outputPath": "F:\\portal\\Backend\\WebBackend\\obj\\",
+      "outputPath": "C:\\Users\\Aorus\\ditnetproject\\WebBackend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

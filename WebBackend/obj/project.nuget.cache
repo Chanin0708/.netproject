@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9rNMvwZU6Rs=",
+  "dgSpecHash": "NBBn75gdAAw=",
   "success": true,
-  "projectFilePath": "f:\\portal\\Backend\\WebBackend\\WebBackend.csproj",
+  "projectFilePath": "c:\\Users\\Aorus\\ditnetproject\\WebBackend\\WebBackend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Aorus\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
     "C:\\Users\\Aorus\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",

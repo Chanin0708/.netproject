@@ -52,14 +52,16 @@ namespace WebBackend.Controllers
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 PasswordHash = hashedPassword,
-                TwoFactorAuthentype = ""
+                TwoFactorAuthentype = "",
+                CreateDateTime = DateTime.Now.AddHours(7),
+                LastUpdate = DateTime.Now.AddHours(7)
             };
 
             await _context.Users.InsertOneAsync(user);
 
             if (user.UserId != null && request.Password != null)
             {
-                await _userService.SaveEncryptedPasswordAsync(user.UserId, request.Password);
+                await _userService.SaveEncryptedPasswordAsync(user.UserId, hashedPassword);
             }
 
             return Ok("User registered successfully");
@@ -108,22 +110,28 @@ namespace WebBackend.Controllers
 
                     // Generate and send a new OTP
                     var otp = _otpService.GenerateOtp();
+                    var referenceNumber = _otpService.GenerateReferenceNo();
 
-                    string subject = "Your OTP Code";
+                    // string subject = "Your OTP Code";
                     string toEmail = user.Email;
                     string messageBody = $"Your OTP code is: {otp}";
-                    await _emailService.SendEmailAsync(user.Email, subject, messageBody);
+                    // await _emailService.SendEmailAsync(user.Email, subject, messageBody);
 
-                    await _otpService.SendOtp(user.Email, otp);
+                    // await _otpService.SendOtp(user.Email, otp);
+                    await _emailService.SendOtpEmailAsync(user.Email, user.FirstName ?? "User", user.LastName ?? "User", otp, referenceNumber);
 
                     // Insert the new OTP with a 15-minute expiration in Bangkok time
                     var otpCode = new OtpCode
                     {
                         UserId = user.UserId,
+                        ReferenceNo = referenceNumber,
                         Code = otp,
-                        Expiry = DateTimeHelper.GetBangkokTime().AddMinutes(15)
+                        Expiry = DateTime.Now.AddHours(7).AddMinutes(15)
                     };
                     await _context.OtpCodes.InsertOneAsync(otpCode);
+
+                    user.LastUpdate = DateTime.Now.AddHours(7);
+                    await _context.Users.ReplaceOneAsync(u => u.UserId == user.UserId, user);
 
                     return Ok(new { Message = "OTP sent to email. Please verify using the OTP." });
                 }
@@ -135,7 +143,7 @@ namespace WebBackend.Controllers
 
             user.CountLogin = 0;
             user.StatusAccount = "active";
-            user.LastUpdate = DateTimeHelper.GetBangkokTime();
+            user.LastUpdate = DateTime.Now.AddHours(7);
             await _context.Users.ReplaceOneAsync(u => u.UserId == user.UserId, user);
 
             if (string.IsNullOrEmpty(user.Username))

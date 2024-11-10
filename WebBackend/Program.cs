@@ -24,6 +24,7 @@ services.AddScoped<OtpService>();
 services.AddScoped<GoogleAuthService>();
 services.AddSingleton<EmailService>(); // Ensure this line is present
 
+
 // Configure JWT Authentication
 services.AddAuthentication(options =>
 {

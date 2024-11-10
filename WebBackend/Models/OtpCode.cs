@@ -12,6 +12,7 @@ namespace WebBackend.Models
         public string? Id { get; set; }
         public string? UserId { get; set; }
         public string? Code { get; set; }
+        public string? ReferenceNo { get; set; }
         public DateTime Expiry { get; set; }
     }
 }

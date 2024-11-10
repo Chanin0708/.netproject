@@ -108,34 +108,11 @@ namespace WebBackend.Services
             {
                 UserId = userId,
                 EncryptedPassword = password,
-                CreateDateTime = DateTime.UtcNow
+                CreateDateTime = DateTime.Now.AddHours(7)
             };
 
             await _context.Passwords.InsertOneAsync(passwordEntry);
         }
-
-        // /Services/UserService.cs
-        // public string DecryptPassword(string encryptedPassword)
-        // {
-        //     var fullCipher = Convert.FromBase64String(encryptedPassword);
-
-        //     var iv = new byte[16];
-        //     var cipher = new byte[16];
-
-        //     Array.Copy(fullCipher, 0, iv, 0, iv.Length);
-        //     Array.Copy(fullCipher, iv.Length, cipher, 0, iv.Length);
-
-        //     var key = Encoding.UTF8.GetBytes(_encryptionKey.Substring(0, 32));
-
-        //     using var aes = Aes.Create();
-        //     aes.Key = key;
-        //     aes.IV = iv;
-
-        //     using var decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-        //     var result = decryptor.TransformFinalBlock(cipher, 0, cipher.Length);
-
-        //     return Encoding.UTF8.GetString(result);
-        // }
 
 
         public string DecryptUserPassword(string encryptedPassword)
@@ -147,32 +124,6 @@ namespace WebBackend.Services
         {
             return DecryptPassword(encryptedPassword);
         }
-
-        // private string DecryptPassword(string encryptedPassword)
-        // {
-        //     var fullCipher = Convert.FromBase64String(encryptedPassword);
-
-        //     // AES block size is 16 bytes
-        //     var iv = new byte[16];
-        //     var cipher = new byte[fullCipher.Length - iv.Length];
-
-        //     // Copy IV and cipher text from the encrypted data
-        //     Array.Copy(fullCipher, 0, iv, 0, iv.Length);
-        //     Array.Copy(fullCipher, iv.Length, cipher, 0, cipher.Length);
-
-        //     var key = Encoding.UTF8.GetBytes(_encryptionKey.Substring(0, 32)); // AES-256 requires a 32-byte key
-
-        //     using var aes = Aes.Create();
-        //     aes.Key = key;
-        //     aes.IV = iv;
-        //     aes.Padding = PaddingMode.PKCS7;
-
-        //     using var decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-        //     var decryptedBytes = decryptor.TransformFinalBlock(cipher, 0, cipher.Length);
-
-        //     return Encoding.UTF8.GetString(decryptedBytes);
-        // }
-
 
     }
 }

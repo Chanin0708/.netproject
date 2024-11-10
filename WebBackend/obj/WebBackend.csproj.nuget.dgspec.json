@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "f:\\portal\\Backend\\WebBackend\\WebBackend.csproj": {}
+    "c:\\Users\\Aorus\\ditnetproject\\WebBackend\\WebBackend.csproj": {}
   },
   "projects": {
-    "f:\\portal\\Backend\\WebBackend\\WebBackend.csproj": {
+    "c:\\Users\\Aorus\\ditnetproject\\WebBackend\\WebBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "f:\\portal\\Backend\\WebBackend\\WebBackend.csproj",
+        "projectUniqueName": "c:\\Users\\Aorus\\ditnetproject\\WebBackend\\WebBackend.csproj",
         "projectName": "WebBackend",
-        "projectPath": "f:\\portal\\Backend\\WebBackend\\WebBackend.csproj",
+        "projectPath": "c:\\Users\\Aorus\\ditnetproject\\WebBackend\\WebBackend.csproj",
         "packagesPath": "C:\\Users\\Aorus\\.nuget\\packages\\",
-        "outputPath": "f:\\portal\\Backend\\WebBackend\\obj\\",
+        "outputPath": "c:\\Users\\Aorus\\ditnetproject\\WebBackend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
